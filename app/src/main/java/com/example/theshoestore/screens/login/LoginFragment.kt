@@ -47,8 +47,8 @@ class LoginFragment : Fragment() {
         viewModel.completeLogin.observe(viewLifecycleOwner, Observer {
             if (it) {
                 val email = viewModel.email.value ?: ""
-                //val action = GameFragmentDirections.actionGameToScore(email)
-                //findNavController(this).navigate(action)
+                val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(email)
+                findNavController(this).navigate(action)
                 viewModel.onLoginComplete()
             }
         })

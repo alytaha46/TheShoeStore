@@ -12,11 +12,16 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:launchSingleTop="false" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.theshoestore.screens.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" />
+        tools:layout="@layout/fragment_welcome" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
 </navigation>
