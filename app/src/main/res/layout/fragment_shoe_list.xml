@@ -16,6 +16,18 @@
         android:padding="20dp"
         tools:context=".screens.shoelist.ShoeListFragment">
 
+        <TextView
+            android:id="@+id/list_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/shoes_list"
+            android:textAlignment="center"
+            android:textSize="45sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
@@ -29,11 +41,11 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/list_label">
 
             <LinearLayout
                 android:id="@+id/linear_layout"

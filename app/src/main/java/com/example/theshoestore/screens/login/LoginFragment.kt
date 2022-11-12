@@ -36,12 +36,19 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.loginButton.setOnClickListener {
-            findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+            navigate()
+        }
+        binding.registerButton.setOnClickListener {
+            navigate()
         }
 
         // Inflate the layout for this fragment
         return binding.root
 
+    }
+
+    fun navigate() {
+        findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
     }
 
 }

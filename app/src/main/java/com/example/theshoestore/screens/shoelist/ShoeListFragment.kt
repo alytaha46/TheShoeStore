@@ -3,17 +3,16 @@ package com.example.theshoestore.screens.shoelist
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import android.view.Gravity
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.theshoestore.R
 import com.example.theshoestore.baseViewModel.AppViewModel
 import com.example.theshoestore.databinding.FragmentInstructionsBinding
@@ -44,6 +43,8 @@ class ShoeListFragment : Fragment() {
 
         binding.vm = viewModel
 
+
+
         // Specify the current activity as the lifecycle owner of the binding. This is used so that
         // the binding can observe LiveData updates
         binding.lifecycleOwner = this
@@ -60,9 +61,17 @@ class ShoeListFragment : Fragment() {
         binding.fab.setOnClickListener {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToAddDetailsFragment())
         }
-
+        setHasOptionsMenu(true)
         // Inflate the layout for this fragment
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,requireView().findNavController())
+    }
 }
