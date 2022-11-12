@@ -4,10 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
-        <variable
-            name="vm"
-            type="com.example.theshoestore.screens.login.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,8 +25,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/email_edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={vm.email}" />
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,35 +44,21 @@
                 android:id="@+id/password_edit_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:text="@={vm.password}" />
+                android:inputType="textPassword" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/error_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="hi"
-            android:text="@{vm.errorMessage}"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:textColor="#f00"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password_layout" />
-
         <Button
+            android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
-            android:onClick="@{()->vm.onLoginClick()}"
             android:text="@string/login"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/error_message" />
+            app:layout_constraintTop_toBottomOf="@id/password_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

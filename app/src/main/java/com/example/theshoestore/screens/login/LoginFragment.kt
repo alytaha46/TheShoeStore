@@ -15,13 +15,12 @@ import com.example.theshoestore.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
-    private lateinit var viewModel: LoginViewModel
     private lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
 
         // Inflate view and obtain an instance of the binding class
         binding =
@@ -32,31 +31,15 @@ class LoginFragment : Fragment() {
                 false
             )
 
-        // Get the viewmodel
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-
-        // Set the viewmodel for databinding - this allows the bound layout access to all of the
-        // data in the VieWModel
-        binding.vm = viewModel
-
         // Specify the current activity as the lifecycle owner of the binding. This is used so that
         // the binding can observe LiveData updates
         binding.lifecycleOwner = this
 
-        // Sets up event listening to navigate the player when the game is finished
-        viewModel.completeLogin.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                val email = viewModel.email.value ?: ""
-                val action = LoginFragmentDirections.actionLoginFragmentToWelcomeFragment(email)
-                findNavController(this).navigate(action)
-                viewModel.onLoginComplete()
-            }
-        })
-
-        /* old way
         binding.loginButton.setOnClickListener {
-            viewModel.onLoginComplete(binding.emailEditText.text, binding.passwordEditText.text)
-        }*/
+            findNavController(this).navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
+        }
+
+        // Inflate the layout for this fragment
         return binding.root
 
     }
